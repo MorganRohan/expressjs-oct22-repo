@@ -40,6 +40,11 @@ var corsOptions = {
     optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
+
+// ---------------
+// Config above, routes below
+
+
 // Actual server behaviour
 app.get('/', (req, res) => {
     console.log('ExpressJS API homepage received a request.');
@@ -50,6 +55,10 @@ app.get('/', (req, res) => {
     });
 
 });
+
+const importedBlogRouting = require('./Blogs/BlogsRoutes');
+app.use('/blogs', importedBlogRouting);
+// localhost:55000/Blogs/1234
 
 
 // Notice that we're not calling app.listen() anywhere in here.
